@@ -1,7 +1,9 @@
 $(document).ready(function() {
     // An array containing each video to be played.
     var playlist = [
+            // Begin first playlist item object
             {
+                // ID is used to find which item is currently playing. All ID numbers must be ascending from 0 in the order items are placed in the array.
                 id: 0,
                 sources: [
                     // For each src, specify the TYPE and SRC properties. For Safari-compatible playback, list mp4 first followed by webm and ogv.
@@ -14,6 +16,7 @@ $(document).ready(function() {
                     autoplay: true
                 }                
             },
+            // End first playlist item object
             {
                 id: 1,
                 sources: [
