@@ -38,15 +38,26 @@ body {
     overflow-y: hidden;    
 }
 
-section {
-    padding: 20px;
+section {    
+    width:90%;
+    margin:auto;
+    padding-top:20px;
 }
+
+img.shatter-logo {
+    display:block;
+    margin: auto;
+    margin-top:20px;
+    width:15%;
+    height:auto;
+}
+
 p {
-    font-size:13px;
+    font-size:15px;
 }
 
 p.margin {
-    margin-top:13px;   
+    margin-top:13px !important;   
 }
 
 p.center {
@@ -146,10 +157,10 @@ a { color: #eee; }
   text-align: center;
 }
 .btn {
-  background: #f2f2f2;
-  border: #357ebd solid 1px;
+  background: #454545;
+  border: #b4b4b4 solid 1px;
   border-radius: 3px;
-  color: #252525;
+  color: #b4b4b4;
   display: inline-block;
   font-size: 14px;
   padding: 8px 15px;
@@ -250,7 +261,7 @@ a { color: #eee; }
   font-size: 20px;
 }
 .modal-footer {
-  text-align: center;
+  text-align: right;
 }
 /*ADDED TO STOP SCROLLING TO TOP*/
 #close {

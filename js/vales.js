@@ -19,8 +19,9 @@ $(document).ready(function() {
                     // Position in layout ascending from 0
                     layout_position: 0,
                     // Order audio should be played, ascending from 0
-                    playlist_position: 0
-                }                
+                    playlist_position: 0,
+                    played: false
+                },                
             },
             // End first playlist item object
             {
@@ -34,7 +35,8 @@ $(document).ready(function() {
                     poster: "images/SPELL.jpg",
                     skipTo: false,
                     layout_position: 2,
-                    playlist_position: 1
+                    playlist_position: 1,
+                    played: false
                 }     
             },
             {
@@ -48,7 +50,8 @@ $(document).ready(function() {
                     poster: "images/Fisher_King.jpg",
                     skipTo: false,
                     layout_position: 4,
-                    playlist_position: 2
+                    playlist_position: 2,
+                    played: false
                 }     
             },
             {
@@ -62,7 +65,8 @@ $(document).ready(function() {
                     poster: "images/LOOP_LOOP.jpg",
                     skipTo: false,
                     layout_position: 6,
-                    playlist_position: 3
+                    playlist_position: 3,
+                    played: false
                 }    
             },
             {
@@ -76,7 +80,8 @@ $(document).ready(function() {
                     poster:"images/birds.jpg",
                     skipTo: false,
                     layout_position: 5,
-                    playlist_position: 4
+                    playlist_position: 4,
+                    played: false
                 }    
             },
             {
@@ -90,7 +95,8 @@ $(document).ready(function() {
                     poster:"images/SALMON_SONG.jpg",
                     layout_position: 3,
                     skipTo: true,
-                    playlist_position: 5
+                    playlist_position: 5,
+                    played: false
                 }    
             },         
             {
@@ -104,7 +110,8 @@ $(document).ready(function() {
                     poster: "images/YOUTHFUL_FOLLY.jpg",
                     skipTo: false,
                     layout_position: 1,
-                    playlist_position: 6
+                    playlist_position: 6,
+                    played: false
                 }    
             },
             {
@@ -115,10 +122,11 @@ $(document).ready(function() {
                 ],
                 config: {
                     autoplay: false,
-                    poster: "images/stairs.jpg",
-                    layout_position: 1,
                     skipTo: false,
-                    playlist_position: 7
+                    poster: "images/stairs.jpg",
+                    layout_position: 7,
+                    playlist_position: 7,
+                    played: false
                 }    
             },
             {
@@ -131,8 +139,9 @@ $(document).ready(function() {
                     autoplay: false,
                     poster: "images/WHALEWATCH.jpg",
                     skipTo: false,
-                    layout_position: 1,
-                    playlist_position: 8
+                    layout_position: 8,
+                    playlist_position: 8,
+                    played: false
                 }    
             },             
             {
@@ -144,8 +153,9 @@ $(document).ready(function() {
                 config: {
                     poster: "images/swimming.jpg",
                     skipTo: false,
-                    layout_position: 8,
-                    playlist_position: 9
+                    layout_position: 9,
+                    playlist_position: 9,
+                    played: false
                 }    
             }            
     ];
@@ -158,7 +168,7 @@ $(document).ready(function() {
             });
             // For each video in the playlist, append a div to .site-container with the video's poster as background image.
             for (var i = 0; i < playlistArray.length; i++) {
-                $('.site-container').append('<div class="video-container item-'+playlistArray[i].config.playlist_position+'" data-id="'+playlistArray[i].id+'" style="background-image: url('+playlist[i].config.poster+');"></div>')
+                $('.site-container').append('<div class="video-container item-'+playlistArray[i].config.playlist_position+'" data-id="'+playlistArray[i].id+'" data-playlist-position="'+playlistArray[i].playlist_position+'" style="background-image: url('+playlistArray[i].config.poster+');"></div>')
             };
         },
         playTrack: function(ele) {
@@ -182,7 +192,8 @@ $(document).ready(function() {
                 _this.bigVideo = new $.BigVideo({container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
-                _this.bigVideo.getPlayer().on('ended', function(e) {           
+                _this.bigVideo.getPlayer().on('ended', function(e) {
+                    _this.currentPlayer.config.played = true;
                     _this.checkNextPlay(e);
                 });
             });
@@ -207,27 +218,32 @@ $(document).ready(function() {
                 if($(this).hasClass('active')) { return; }
                 // If player is part of the queue, do nothing.
                 if(playlist[$(this).attr('data-id')].config.skipTo == false) { return; }
-                // Otherwise we figure out what to play next and detach the event handler to prevent chaos.                  
-                _this.playTrack(e.currentTarget);                
+                if(typeof(playlist[($(this).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) {
+                    _this.playTrack(e.currentTarget);                
+                }                
             });
         },
         checkNextPlay: function(event) {
             var _this = this;
             // Figure out which video we're currently watching.
             var currentVideo = _this.currentPlayer.config.playlist_position;
+            var nextVideo = _this.getNextTrack().config.playlist_position, autoplay = _this.getNextTrack().config.autoplay;            
             // Start from first video if current is the last.
             if(currentVideo == playlist.length - 1) { _this.playTrack('.item-0'); return; }
-            // Find the next video in the playlist array with autoplay enabled.
-            for (var i = 0; i < playlist.length; i++) {                    
-                if(playlist[i].config.playlist_position > currentVideo && playlist[i].config.autoplay == true) {                    
-                    _this.playTrack('.item-'+i);
-                    return;
-                }
-            };
+            // Find the next video in the playlist array with autoplay enabled.                
+            if(nextVideo > currentVideo && autoplay == true) {                    
+                _this.playTrack('.item-'+nextVideo);
+                return;
+            }
         },     
         currentPlayer: false,
         bigVideo: false,
-        animating: false
+        animating: false,        
+        getNextTrack: function() {
+            var _this = this;
+            if(_this.currentPlayer == false) { return; }
+            return playlist[(_this.currentPlayer.config.playlist_position + 1)];
+        }
     };
     // Instantiate controller when DOM is loaded.
     controls.start();
