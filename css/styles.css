@@ -72,12 +72,6 @@ a { color: #eee; }
     background-repeat: no-repeat;
 }
 
-video {
-    min-width:100vw;
-    height:100vh;
-    width:100vw;
-}
-
 .credits {
     z-index:3;
     position:fixed;
