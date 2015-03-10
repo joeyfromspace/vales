@@ -4,10 +4,13 @@ $(document).ready(function() {
             {
                 id: 0,
                 sources: [
+                    // For each src, specify the TYPE and SRC properties. For Safari-compatible playback, list mp4 first followed by webm and ogv.
                     { src: 'videos/SALMON_LOOPS_d4.mp4', type: 'video/mp4'}
                 ],
-                config: {                    
+                config: {
+                    // Poster image to display for this video while it's not playing.
                     poster: "images/SALMON_LOOPS.jpg",
+                    // If autoplay is true, video will be played automatically when its predecessor is completed.
                     autoplay: true
                 }                
             },
@@ -119,6 +122,9 @@ $(document).ready(function() {
                 _this.bigVideo = new $.BigVideo({useFlashForFirefox:false, container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
+                _this.bigVideo.getPlayer().on('ended', function(e) {           
+                    _this.checkNextPlay(e);
+                });
             });
             // Activate listener method
             _this.listen();                     
@@ -142,10 +148,6 @@ $(document).ready(function() {
                 // Otherwise we figure out what to play next and detach the event handler to prevent chaos.                  
                 _this.playTrack(e.currentTarget);                
             });
-            // Event listener for when a video ends.
-            _this.bigVideo.onEnded = function(e) {
-                _this.checkNextPlay(e);
-            };
         },
         checkNextPlay: function(event) {
             var _this = this;
@@ -154,9 +156,10 @@ $(document).ready(function() {
             // Start from first video if current is the last.
             if(currentVideo == playlist.length - 1) { _this.playTrack('.item-0'); return; }
             // Find the next video in the playlist array with autoplay enabled.
-            for (var i = 0; i < playlist.length; i--) {                    
+            for (var i = 0; i < playlist.length; i++) {                    
                 if(i > currentVideo && playlist[i].config.autoplay == true) {                    
                     _this.playTrack('.item-'+i);
+                    return;
                 }
             };
         },     
