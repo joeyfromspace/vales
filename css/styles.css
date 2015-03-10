@@ -196,6 +196,9 @@ a { color: #eee; }
   top: -100%;
   z-index: 11;
   width: 70vw;
+  height:80vh;
+  overflow-y:scroll;
+  text-overflow:clip;
   -webkit-transform: translate(0, -300%);
   -ms-transform: translate(0, -300%);
   transform: translate(0, -300%);
@@ -212,7 +215,6 @@ a { color: #eee; }
     margin-top:2px;
     margin-bottom:10px;
     font-size:24px;
-    overflow-y:scroll;
 }
 
 .modal-body p {
