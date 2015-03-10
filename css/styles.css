@@ -69,6 +69,7 @@ a { color: #eee; }
     width:100vw;
     background-size: 100vw;
     background-position:top left;
+    background-repeat: no-repeat;
 }
 
 video {
