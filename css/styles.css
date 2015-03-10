@@ -50,6 +50,10 @@ p.center {
 
 a { color: #eee; }
 
+#big-video-wrap {
+  position:relative !important;
+}
+
 .site-container {
     display:block;
     position:absolute;
@@ -69,12 +73,7 @@ a { color: #eee; }
     width:100vw;
     background-size: 100vw;
     background-position:top left;
-}
-
-video {
-    min-width:100vw;
-    height:100vh;
-    width:100vw;
+    background-repeat: no-repeat;
 }
 
 .credits {
@@ -197,6 +196,9 @@ video {
   top: -100%;
   z-index: 11;
   width: 70vw;
+  height:80vh;
+  overflow-y:scroll;
+  text-overflow:clip;
   -webkit-transform: translate(0, -300%);
   -ms-transform: translate(0, -300%);
   transform: translate(0, -300%);
