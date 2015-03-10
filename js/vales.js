@@ -115,17 +115,10 @@ $(document).ready(function() {
             // Instantiate the current player
             var cp = playlist[current];            
             _this.currentPlayer = cp;
-            var getSources = function(cp) {
-                var sources = [];
-                for(var i = cp.sources.length - 1; i >= 0; i--) {
-                    sources.push({type: cp.sources[i].src, src: cp.sources[i].src});
-                }
-                return sources;
-            };
             $(function() {
                 _this.bigVideo = new $.BigVideo({useFlashForFirefox:false, container:$('.active')});
                 _this.bigVideo.init();
-                _this.bigVideo.show(getSources(cp));
+                _this.bigVideo.show(cp.sources);
             });
             // Activate listener method
             _this.listen();                     
@@ -133,7 +126,6 @@ $(document).ready(function() {
         start: function() {
             var _this = this;
             // Build player object.         
-            _this.makePlayers(playlist);
             // Build thumbs divs
             _this.setThumbs();
             // Start playing from the first track.
