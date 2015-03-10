@@ -4,110 +4,167 @@ $(document).ready(function() {
             // Begin first playlist item object
             {
                 // ID is used to find which item is currently playing. All ID numbers must be ascending from 0 in the order items are placed in the array.
-                id: 0,
+                id: 0,                
                 sources: [
                     // For each src, specify the TYPE and SRC properties. For Safari-compatible playback, list mp4 first followed by webm and ogv.
-                    { src: 'videos/SALMON_LOOPS_d4.mp4', type: 'video/mp4'}
+                    { type: 'video/mp4', src: 'videos/SALMON_LOOPS_d4.mp4' },
+                    { type: 'video/ogg', src: 'videos/SALMON_LOOPS_d4.ogv'}          
                 ],
                 config: {
                     // Poster image to display for this video while it's not playing.
                     poster: "images/SALMON_LOOPS.jpg",
+                    skipTo: false,
                     // If autoplay is true, video will be played automatically when its predecessor is completed.
-                    autoplay: true
+                    autoplay: true,
+                    // Position in layout ascending from 0
+                    layout_position: 0,
+                    // Order audio should be played, ascending from 0
+                    playlist_position: 0
                 }                
             },
             // End first playlist item object
             {
                 id: 1,
                 sources: [
-                    { src: 'videos/SPELL_d4.mp4', type: 'video/mp4'}
+                    { src: 'videos/SPELL_d4.mp4', type: 'video/mp4'},
+                    { src: 'videos/SPELL_d4.ogv', type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: true,              
-                    poster: "images/SPELL.jpg"
+                    poster: "images/SPELL.jpg",
+                    skipTo: false,
+                    layout_position: 2,
+                    playlist_position: 1
                 }     
             },
             {
                 id: 2,
                 sources: [
-                    { src: "videos/FISHER_KING_d4.mp4", type: 'video/mp4'}
+                    { src: "videos/FISHER_KING_d4.mp4", type: 'video/mp4'},
+                    { src: "videos/FISHER_KING_d4.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
-                    poster: "images/Fisher_King.jpg"
+                    poster: "images/Fisher_King.jpg",
+                    skipTo: false,
+                    layout_position: 4,
+                    playlist_position: 2
                 }     
             },
             {
                 id: 3,
                 sources: [
-                    { src: "videos/LOOP_LOOP_d5.mp4", type: 'video/mp4' }
+                    { src: "videos/LOOP_LOOP_d5.mp4", type: 'video/mp4' },
+                    { src: "videos/LOOP_LOOP_d5.ogv", type: 'video/ogg' }
                 ],
                 config: {
                     autoplay: false,
-                    poster: "images/LOOP_LOOP.jpg"
+                    poster: "images/LOOP_LOOP.jpg",
+                    skipTo: false,
+                    layout_position: 6,
+                    playlist_position: 3
                 }    
             },
             {
                 id: 4,
                 sources: [
-                    { src: "videos/birds.mp4", type: 'video/mp4' }
+                    { src: "videos/birds.mp4", type: 'video/mp4' },
+                    { src: "videos/birds.ogv", type: 'video/ogg' }
                 ],
                 config: {
                     autoplay: true,
-                    poster:"images/birds.jpg"
+                    poster:"images/birds.jpg",
+                    skipTo: false,
+                    layout_position: 5,
+                    playlist_position: 4
                 }    
             },
             {
                 id: 5,
                 sources: [
-                    { src: "videos/SALMON_SONG_d5.mp4", type: 'video/mp4'}
+                    { src: "videos/SALMON_SONG_d5.mp4", type: 'video/mp4'},
+                    { src: "videos/SALMON_SONG_d5.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
-                    poster:"images/SALMON_SONG.jpg"
+                    poster:"images/SALMON_SONG.jpg",
+                    layout_position: 3,
+                    skipTo: true,
+                    playlist_position: 5
                 }    
             },         
             {
                 id: 6,
                 sources: [ 
-                    { src: "videos/YOUTHFUL_FOLLY_d3.mp4", type: 'video/mp4'}
-                ],
-                config: {
-                    autoplay: true,
-                    poster: "images/YOUTHFUL_FOLLY.jpg"
-                }    
-            },  
-            {
-                id: 7,
-                sources: [
-                    { src: "videos/WHALEWATCH_d5.mp4", type: 'video/mp4'}
+                    { src: "videos/YOUTHFUL_FOLLY_d3.mp4", type: 'video/mp4'},
+                    { src: "videos/YOUTHFUL_FOLLY_d3.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
-                    poster: "images/WHALEWATCH.jpg"
+                    poster: "images/YOUTHFUL_FOLLY.jpg",
+                    skipTo: false,
+                    layout_position: 1,
+                    playlist_position: 6
                 }    
-            },             
+            },
+            {
+                id: 7,
+                sources: [ 
+                    { src: "videos/stairs.mp4", type: 'video/mp4'},
+                    { src: "videos/stairs.ogv", type: 'video/ogg'}
+                ],
+                config: {
+                    autoplay: false,
+                    poster: "images/stairs.jpg",
+                    layout_position: 1,
+                    skipTo: false,
+                    playlist_position: 7
+                }    
+            },
             {
                 id: 8,
                 sources: [
-                    { src: "videos/swimming.mp4", type: 'video/mp4'}
+                    { src: "videos/WHALEWATCH_d5.mp4", type: 'video/mp4'},
+                    { src: "videos/WHALEWATCH_d5.ogv", type: 'video/ogg'}
                 ],
                 config: {
-                    poster: "images/swimming.jpg" 
+                    autoplay: false,
+                    poster: "images/WHALEWATCH.jpg",
+                    skipTo: false,
+                    layout_position: 1,
+                    playlist_position: 8
+                }    
+            },             
+            {
+                id: 9,
+                sources: [
+                    { src: "videos/swimming.mp4", type: 'video/mp4'},
+                    { src: "videos/swimming.ogv", type: 'video/ogg'}
+                ],
+                config: {
+                    poster: "images/swimming.jpg",
+                    skipTo: false,
+                    layout_position: 8,
+                    playlist_position: 9
                 }    
             }            
     ];
     // Main control object for managing playback and concurrent playback devices.
     var controls = {
         setThumbs: function() {
+            var playlistArray = playlist.slice();
+            playlistArray.sort(function(a,b) {
+                return a.config.layout_position - b.config.layout_position;
+            });
             // For each video in the playlist, append a div to .site-container with the video's poster as background image.
-            for (var i = 0; i < playlist.length; i++) {
-                $('.site-container').append('<div class="video-container item-'+i+'" data-id="'+i+'" style="background-image: url('+playlist[i].config.poster+');"></div>')
+            for (var i = 0; i < playlistArray.length; i++) {
+                $('.site-container').append('<div class="video-container item-'+playlistArray[i].config.playlist_position+'" data-id="'+playlistArray[i].id+'" style="background-image: url('+playlist[i].config.poster+');"></div>')
             };
         },
         playTrack: function(ele) {
             // Kill old event listeners.
             $('.video-container').off(); 
+            $('html').off('scroll');
             // Function for changing the playing track.
             var _this = this;
             // Make sure we destroy the existing player before we play the next one.            
@@ -122,7 +179,7 @@ $(document).ready(function() {
             var cp = playlist[current];            
             _this.currentPlayer = cp;
             $(function() {
-                _this.bigVideo = new $.BigVideo({useFlashForFirefox:false, container:$('.active')});
+                _this.bigVideo = new $.BigVideo({container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
                 _this.bigVideo.getPlayer().on('ended', function(e) {           
@@ -147,7 +204,9 @@ $(document).ready(function() {
                 e.preventDefault();     
                 e.stopImmediatePropagation();
                 // If player div was clicked, do nothing.
-                if($(this).hasClass('active')) { return; } 
+                if($(this).hasClass('active')) { return; }
+                // If player is part of the queue, do nothing.
+                if(playlist[$(this).attr('data-id')].config.skipTo == false) { return; }
                 // Otherwise we figure out what to play next and detach the event handler to prevent chaos.                  
                 _this.playTrack(e.currentTarget);                
             });
@@ -155,19 +214,20 @@ $(document).ready(function() {
         checkNextPlay: function(event) {
             var _this = this;
             // Figure out which video we're currently watching.
-            var currentVideo = _this.currentPlayer.id;
+            var currentVideo = _this.currentPlayer.config.playlist_position;
             // Start from first video if current is the last.
             if(currentVideo == playlist.length - 1) { _this.playTrack('.item-0'); return; }
             // Find the next video in the playlist array with autoplay enabled.
             for (var i = 0; i < playlist.length; i++) {                    
-                if(i > currentVideo && playlist[i].config.autoplay == true) {                    
+                if(playlist[i].config.playlist_position > currentVideo && playlist[i].config.autoplay == true) {                    
                     _this.playTrack('.item-'+i);
                     return;
                 }
             };
         },     
         currentPlayer: false,
-        bigVideo: false
+        bigVideo: false,
+        animating: false
     };
     // Instantiate controller when DOM is loaded.
     controls.start();

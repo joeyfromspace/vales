@@ -14,13 +14,13 @@ root {
 }
 
 p,ul,li,ol,td,div,span {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     font-weight:300;
     color:#d6d6d6;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     font-weight:300;
     color:#eee;
 }
@@ -44,6 +44,11 @@ section {
 p {
     font-size:13px;
 }
+
+p.margin {
+    margin-top:13px;   
+}
+
 p.center {
     text-align:center;
 }
@@ -85,8 +90,9 @@ a { color: #eee; }
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;  
+  background-image:url('../images/help-with-circle.svg');
   position: relative;  
 }
 
@@ -105,9 +111,15 @@ a { color: #eee; }
 .double-bounce1:hover, .double-bounce2:hover {
   -webkit-animation: bounce 2.0s infinite ease-in-out;
   animation: bounce 2.0s infinite ease-in-out;
+    opacity:1;    
 }
 
-.double-bounce2 {
+.double-bounce1, .double-bounce2 {
+    background-image:url('../images/help-with-circle.svg');
+    opacity:0;
+}
+
+.double-bounce2 {  
   -webkit-animation-delay: -1.0s;
   animation-delay: -1.0s;
 }
@@ -188,7 +200,7 @@ a { color: #eee; }
   top: 5%;
 }
 .modal-dialog {
-  background: #252525;
+  background: rgba(37, 37, 37, 0.5);
   border: #333333 solid 1px;
   border-radius: 5px;
   position: fixed;
@@ -205,8 +217,12 @@ a { color: #eee; }
   -webkit-transition: -webkit-transform 0.3s ease-out;
   -moz-transition: -moz-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;    
 }
+.modal-dialog::-webkit-scrollbar { 
+    display: none; 
+}
+
 .modal-body {
   padding: 20px;    
 }
@@ -234,7 +250,7 @@ a { color: #eee; }
   font-size: 20px;
 }
 .modal-footer {
-  text-align: right;
+  text-align: center;
 }
 /*ADDED TO STOP SCROLLING TO TOP*/
 #close {
