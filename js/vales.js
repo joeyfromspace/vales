@@ -42,7 +42,7 @@ $(document).ready(function() {
             {
                 id: 2,
                 sources: [
-                    { src: "videos/FISHER_KING_d4.mp4", type: 'video/mp4'},
+                    { src: "videos/FISHER_KING_1_cc.mp4", type: 'video/mp4'},
                     { src: "videos/FISHER_KING_d4.ogv", type: 'video/ogg'}
                 ],
                 config: {
@@ -230,7 +230,7 @@ $(document).ready(function() {
             // Start from first video if current is the last.
             if(currentVideo == playlist.length - 1) { _this.playTrack('.item-0'); return; }
             // Find the next video in the playlist array with autoplay enabled.                
-            if(nextVideo > currentVideo && autoplay == true) {                    
+            if(autoplay) {                    
                 _this.playTrack('.item-'+nextVideo);
                 return;
             }
