@@ -174,7 +174,6 @@ $(document).ready(function() {
         playTrack: function(ele) {
             // Kill old event listeners.
             $('.video-container').off(); 
-            $('html').off('scroll');
             // Function for changing the playing track.
             var _this = this;
             // Make sure we destroy the existing player before we play the next one.            
@@ -189,7 +188,7 @@ $(document).ready(function() {
             var cp = playlist[current];            
             _this.currentPlayer = cp;
             $(function() {
-                _this.bigVideo = new $.BigVideo({useFlashForFirefox:false, container:$('.active')});
+                _this.bigVideo = new $.BigVideo({container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
                 _this.bigVideo.getPlayer().on('ended', function(e) {
