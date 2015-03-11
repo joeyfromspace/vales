@@ -103,8 +103,14 @@ a { color: #eee; }
 .spinner {
   width: 20px;
   height: 20px;  
-  background-image:url('../images/help-with-circle.svg');
+  background-image:url('../images/yazidi-sun.png');
+  background-size: contain;
   position: relative;  
+}
+
+.spinner:hover {
+  -webkit-animation: spin 4.0s infinite linear;
+  animation: spin 4.0s infinite linear;
 }
 
 .double-bounce1, .double-bounce2 {
@@ -148,6 +154,21 @@ a { color: #eee; }
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+@-webkit-keyframes spin {
+  0%, 100% { -webkit-transform: rotate(0deg) }
+  50% { -webkit-transform: rotate(360deg) }
+}
+
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+        -webkit-transform: rotate(0deg);
+    } to { 
+        transform: rotate(360deg); 
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 /* Modal Classes */
