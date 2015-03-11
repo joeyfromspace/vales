@@ -7,8 +7,8 @@ $(document).ready(function() {
                 id: 0,                
                 sources: [
                     // For each src, specify the TYPE and SRC properties. For Safari-compatible playback, list mp4 first followed by webm and ogv.
-                    { type: 'video/mp4', src: 'videos/SALMON_LOOPS_d4.mp4' },
-                    { type: 'video/ogg', src: 'videos/SALMON_LOOPS_d4.ogv'}          
+                    { type: "video/mp4", src: "videos/SALMON_LOOPS_d4.mp4" },
+                    { type: "video/ogg", src: "videos/SALMON_LOOPS_d4.ogv"}          
                 ],
                 config: {
                     // Poster image to display for this video while it's not playing.
@@ -189,7 +189,7 @@ $(document).ready(function() {
             var cp = playlist[current];            
             _this.currentPlayer = cp;
             $(function() {
-                _this.bigVideo = new $.BigVideo({container:$('.active')});
+                _this.bigVideo = new $.BigVideo({useFlashForFirefox:false, container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
                 _this.bigVideo.getPlayer().on('ended', function(e) {
