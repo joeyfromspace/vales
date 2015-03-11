@@ -168,7 +168,7 @@ $(document).ready(function() {
             });
             // For each video in the playlist, append a div to .site-container with the video's poster as background image.
             for (var i = 0; i < playlistArray.length; i++) {
-                $('.site-container').append('<div class="video-container item-'+playlistArray[i].config.playlist_position+'" data-id="'+playlistArray[i].id+'" data-playlist-position="'+playlistArray[i].playlist_position+'" style="background-image: url('+playlistArray[i].config.poster+');"></div>')
+                $('.site-container').append('<div class="video-container item-'+playlistArray[i].config.playlist_position+'" data-id="'+playlistArray[i].id+'" data-playlist-position="'+playlistArray[i].config.playlist_position+'" style="background-image: url('+playlistArray[i].config.poster+');"></div>')
             };
         },
         playTrack: function(ele) {
@@ -217,7 +217,7 @@ $(document).ready(function() {
                 // If player div was clicked, do nothing.
                 if($(this).hasClass('active')) { return; }
                 // If player is part of the queue, do nothing.
-                if((typeof(playlist[($(this).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) || playlist[$(this).attr('data-id')].config.skipTo)  {
+                if((typeof(playlist[($(e.currentTarget).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) || playlist[$(this).attr('data-id')].config.skipTo)  {
                     _this.playTrack(e.currentTarget);                
                 }                
             });
