@@ -192,10 +192,7 @@ $(document).ready(function() {
                 _this.bigVideo = new $.BigVideo({container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
-                _this.bigVideo.getPlayer().on('ended', function(e) {
-                    _this.currentPlayer.config.played = true;
-                    _this.checkNextPlay(e);
-                });
+                _this.bigVideo.getPlayer().on('ended', _this.donePlaying(e));
             });
             // Activate listener method
             _this.listen();                     
@@ -242,6 +239,11 @@ $(document).ready(function() {
             var _this = this;
             if(_this.currentPlayer == false) { return; }
             return playlist[(_this.currentPlayer.config.playlist_position + 1)];
+        },
+        donePlaying: function(e) {
+            var _this = this;
+            _this.currentPlayer.config.played = true;
+            _this.checkNextPlay(e);
         }
     };
     // Instantiate controller when DOM is loaded.
