@@ -43,7 +43,7 @@ $(document).ready(function() {
                 id: 2,
                 sources: [
                     { src: "videos/FISHER_KING_1_cc1.mp4", type: 'video/mp4'},
-                    { src: "videos/FISHER_KING_d4.ogv", type: 'video/ogg'}
+                    { src: "videos/FISHER_KING_1_cc1.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
