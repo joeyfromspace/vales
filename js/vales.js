@@ -192,7 +192,10 @@ $(document).ready(function() {
                 _this.bigVideo = new $.BigVideo({container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
-                _this.bigVideo.getPlayer().on('ended', _this.donePlaying(e));
+                _this.bigVideo.getPlayer().on('ended', function(e) {
+                    _this.donePlaying(e);
+                    return;
+                });
             });
             // Activate listener method
             _this.listen();                     
@@ -204,6 +207,7 @@ $(document).ready(function() {
             _this.setThumbs();
             // Start playing from the first track.
             _this.playTrack('.item-0');
+            return;
         },
         listen: function() {
             var _this = this;
@@ -216,7 +220,8 @@ $(document).ready(function() {
                 // If player is part of the queue, do nothing.
                 if((typeof(playlist[($(e.currentTarget).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) || playlist[$(this).attr('data-id')].config.skipTo)  {
                     _this.playTrack(e.currentTarget);                
-                }                
+                }
+                return;                
             });
         },
         checkNextPlay: function(event) {
@@ -244,6 +249,7 @@ $(document).ready(function() {
             var _this = this;
             _this.currentPlayer.config.played = true;
             _this.checkNextPlay(e);
+            return;
         }
     };
     // Instantiate controller when DOM is loaded.
