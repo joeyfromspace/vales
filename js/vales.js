@@ -106,7 +106,7 @@ $(document).ready(function() {
                     { src: "videos/YOUTHFUL_FOLLY_d3_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
-                    autoplay: false,
+                    autoplay: true,
                     poster: "images/YOUTHFUL_FOLLY.jpg",
                     skipTo: false,
                     layout_position: 1,
@@ -136,7 +136,7 @@ $(document).ready(function() {
                     { src: "videos/WHALEWATCH_d5_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
-                    autoplay: false,
+                    autoplay: true,
                     poster: "images/WHALEWATCH.jpg",
                     skipTo: false,
                     layout_position: 8,
@@ -153,6 +153,7 @@ $(document).ready(function() {
                 config: {
                     poster: "images/swimming.jpg",
                     skipTo: false,
+                    autoplay:true,
                     layout_position: 9,
                     playlist_position: 9,
                     played: false
