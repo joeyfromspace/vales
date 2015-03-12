@@ -7,8 +7,8 @@ $(document).ready(function() {
                 id: 0,                
                 sources: [
                     // For each src, specify the TYPE and SRC properties. For Safari-compatible playback, list mp4 first followed by webm and ogv.
-                    { type: "video/mp4", src: "videos/SALMON_LOOPS_d4.mp4" },
-                    { type: "video/ogg", src: "videos/SALMON_LOOPS_d4.ogv"}          
+                    { type: "video/mp4", src: "videos/SALMON_LOOPS_d4_2.mp4" },
+                    { type: "video/ogg", src: "videos/SALMON_LOOPS_d4_2.ogv"}          
                 ],
                 config: {
                     // Poster image to display for this video while it's not playing.
@@ -27,8 +27,8 @@ $(document).ready(function() {
             {
                 id: 1,
                 sources: [
-                    { src: 'videos/SPELL_d4.mp4', type: 'video/mp4'},
-                    { src: 'videos/SPELL_d4.ogv', type: 'video/ogg'}
+                    { src: 'videos/SPELL_d4_2.mp4', type: 'video/mp4'},
+                    { src: 'videos/SPELL_d4_2.ogv', type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: true,              
@@ -42,8 +42,8 @@ $(document).ready(function() {
             {
                 id: 2,
                 sources: [
-                    { src: "videos/FISHER_KING_1_cc1.mp4", type: 'video/mp4'},
-                    { src: "videos/FISHER_KING_1_cc1.ogv", type: 'video/ogg'}
+                    { src: "videos/FISHER_KING_1_cc1_2.mp4", type: 'video/mp4'},
+                    { src: "videos/FISHER_KING_1_cc1_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
@@ -57,8 +57,8 @@ $(document).ready(function() {
             {
                 id: 3,
                 sources: [
-                    { src: "videos/LOOP_LOOP_d5.mp4", type: 'video/mp4' },
-                    { src: "videos/LOOP_LOOP_d5.ogv", type: 'video/ogg' }
+                    { src: "videos/LOOP_LOOP_d5_2.mp4", type: 'video/mp4' },
+                    { src: "videos/LOOP_LOOP_d5_2.ogv", type: 'video/ogg' }
                 ],
                 config: {
                     autoplay: false,
@@ -72,8 +72,8 @@ $(document).ready(function() {
             {
                 id: 4,
                 sources: [
-                    { src: "videos/birds.mp4", type: 'video/mp4' },
-                    { src: "videos/birds.ogv", type: 'video/ogg' }
+                    { src: "videos/birds_2.mp4", type: 'video/mp4' },
+                    { src: "videos/birds_2.ogv", type: 'video/ogg' }
                 ],
                 config: {
                     autoplay: true,
@@ -87,8 +87,8 @@ $(document).ready(function() {
             {
                 id: 5,
                 sources: [
-                    { src: "videos/SALMON_SONG_d5.mp4", type: 'video/mp4'},
-                    { src: "videos/SALMON_SONG_d5.ogv", type: 'video/ogg'}
+                    { src: "videos/SALMON_SONG_d6_2.mp4", type: 'video/mp4'},
+                    { src: "videos/SALMON_SONG_d5_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
@@ -102,8 +102,8 @@ $(document).ready(function() {
             {
                 id: 6,
                 sources: [ 
-                    { src: "videos/YOUTHFUL_FOLLY_d3.mp4", type: 'video/mp4'},
-                    { src: "videos/YOUTHFUL_FOLLY_d3.ogv", type: 'video/ogg'}
+                    { src: "videos/YOUTHFUL_FOLLY_d3_2.mp4", type: 'video/mp4'},
+                    { src: "videos/YOUTHFUL_FOLLY_d3_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
@@ -117,8 +117,8 @@ $(document).ready(function() {
             {
                 id: 7,
                 sources: [ 
-                    { src: "videos/stairs.mp4", type: 'video/mp4'},
-                    { src: "videos/stairs.ogv", type: 'video/ogg'}
+                    { src: "videos/stairs_2.mp4", type: 'video/mp4'},
+                    { src: "videos/stairs_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
@@ -132,8 +132,8 @@ $(document).ready(function() {
             {
                 id: 8,
                 sources: [
-                    { src: "videos/WHALEWATCH_d5.mp4", type: 'video/mp4'},
-                    { src: "videos/WHALEWATCH_d5.ogv", type: 'video/ogg'}
+                    { src: "videos/WHALEWATCH_d5_2.mp4", type: 'video/mp4'},
+                    { src: "videos/WHALEWATCH_d5_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     autoplay: false,
@@ -147,8 +147,8 @@ $(document).ready(function() {
             {
                 id: 9,
                 sources: [
-                    { src: "videos/swimming.mp4", type: 'video/mp4'},
-                    { src: "videos/swimming.ogv", type: 'video/ogg'}
+                    { src: "videos/swimming_2.mp4", type: 'video/mp4'},
+                    { src: "videos/swimming_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
                     poster: "images/swimming.jpg",
@@ -188,7 +188,7 @@ $(document).ready(function() {
             var cp = playlist[current];            
             _this.currentPlayer = cp;
             $(function() {
-                _this.bigVideo = new $.BigVideo({container:$('.active')});
+                _this.bigVideo = new $.BigVideo({useFlashForFirefox:false, container:$('.active')});
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
                 _this.bigVideo.getPlayer().on('ended', function(e) {
