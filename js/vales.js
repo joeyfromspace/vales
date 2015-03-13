@@ -13,7 +13,7 @@ $(document).ready(function() {
                 config: {
                     // Poster image to display for this video while it's not playing.
                     poster: "images/SALMON_LOOPS.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     // If autoplay is true, video will be played automatically when its predecessor is completed.
                     autoplay: true,
                     // Position in layout ascending from 0
@@ -33,9 +33,9 @@ $(document).ready(function() {
                 config: {
                     autoplay: true,              
                     poster: "images/SPELL.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     layout_position: 2,
-                    playlist_position: 1,
+                    playlist_position: 2,
                     played: false
                 }     
             },
@@ -46,11 +46,11 @@ $(document).ready(function() {
                     { src: "videos/FISHER_KING_1_cc1_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
-                    autoplay: false,
+                    autoplay: true,
                     poster: "images/Fisher_King.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     layout_position: 4,
-                    playlist_position: 2,
+                    playlist_position: 4,
                     played: false
                 }     
             },
@@ -61,11 +61,11 @@ $(document).ready(function() {
                     { src: "videos/LOOP_LOOP_d5_2.ogv", type: 'video/ogg' }
                 ],
                 config: {
-                    autoplay: false,
+                    autoplay: true,
                     poster: "images/LOOP_LOOP.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     layout_position: 6,
-                    playlist_position: 3,
+                    playlist_position: 6,
                     played: false
                 }    
             },
@@ -78,9 +78,9 @@ $(document).ready(function() {
                 config: {
                     autoplay: true,
                     poster:"images/birds.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     layout_position: 5,
-                    playlist_position: 4,
+                    playlist_position: 5,
                     played: false
                 }    
             },
@@ -91,11 +91,11 @@ $(document).ready(function() {
                     { src: "videos/SALMON_SONG_d5_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
-                    autoplay: false,
+                    autoplay: true,
                     poster:"images/SALMON_SONG.jpg",
                     layout_position: 3,
                     skipTo: true,
-                    playlist_position: 5,
+                    playlist_position: 3,
                     played: false
                 }    
             },         
@@ -108,9 +108,9 @@ $(document).ready(function() {
                 config: {
                     autoplay: true,
                     poster: "images/YOUTHFUL_FOLLY.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     layout_position: 1,
-                    playlist_position: 6,
+                    playlist_position: 1,
                     played: false
                 }    
             },
@@ -121,8 +121,8 @@ $(document).ready(function() {
                     { src: "videos/stairs_2.ogv", type: 'video/ogg'}
                 ],
                 config: {
-                    autoplay: false,
-                    skipTo: false,
+                    autoplay: true,
+                    skipTo: true,
                     poster: "images/stairs.jpg",
                     layout_position: 7,
                     playlist_position: 7,
@@ -138,7 +138,7 @@ $(document).ready(function() {
                 config: {
                     autoplay: true,
                     poster: "images/WHALEWATCH.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     layout_position: 8,
                     playlist_position: 8,
                     played: false
@@ -152,7 +152,7 @@ $(document).ready(function() {
                 ],
                 config: {
                     poster: "images/swimming.jpg",
-                    skipTo: false,
+                    skipTo: true,
                     autoplay:true,
                     layout_position: 9,
                     playlist_position: 9,
@@ -177,7 +177,7 @@ $(document).ready(function() {
             $('.video-container').off(); 
             // Function for changing the playing track.
             var _this = this;
-            // Make sure we destroy the existing player before we play the next one.            
+            // Make sure we destroy the existing player before we instantiate the next one.            
             if(_this.bigVideo) {
                 _this.bigVideo.remove();
                 _this.bigVideo = false;
