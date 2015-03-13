@@ -218,9 +218,11 @@ $(document).ready(function() {
                 // If player div was clicked, do nothing.
                 if($(this).hasClass('active')) { return; }
                 // If player is part of the queue, do nothing.
-                if((typeof(playlist[($(e.currentTarget).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) || playlist[$(this).attr('data-id')].config.skipTo)  {
-                    _this.playTrack(e.currentTarget);                
-                }
+                // Disabled 03.13.2015
+//                 if((typeof(playlist[($(e.currentTarget).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) || playlist[$(this).attr('data-id')].config.skipTo)  {
+//                     _this.playTrack(e.currentTarget);                
+//                 }
+                _this.playTrack(e.currentTarget);           
                 return;                
             });
         },
