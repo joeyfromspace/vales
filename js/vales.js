@@ -179,9 +179,11 @@ $(document).ready(function() {
             var _this = this;
             // Make sure we destroy the existing player before we instantiate the next one.            
             if(_this.bigVideo) {
+                _this.bigVideo.getPlayer().off();
                 _this.bigVideo.remove();
                 _this.bigVideo = false;
             }
+            if(_this.currentPlayer) { _this.currentPlayer = false; }
             $('.active').removeClass('active');
             $(ele).addClass('active');
             var current = $(ele).attr('data-id');
@@ -193,6 +195,8 @@ $(document).ready(function() {
                 _this.bigVideo.init();
                 _this.bigVideo.show(cp.sources);
                 _this.bigVideo.getPlayer().on('ended', function(e) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
                     _this.donePlaying(e);
                     return;
                 });
@@ -230,14 +234,16 @@ $(document).ready(function() {
             var _this = this;
             // Figure out which video we're currently watching.
             var currentVideo = _this.currentPlayer.config.playlist_position;
-            var nextVideo = _this.getNextTrack().config.playlist_position, autoplay = _this.getNextTrack().config.autoplay;            
-            // Start from first video if current is the last.
-            if(currentVideo == playlist.length - 1) { _this.playTrack('.item-0'); return; }
-            // Find the next video in the playlist array with autoplay enabled.                
-            if(autoplay) {                    
-                _this.playTrack('.item-'+nextVideo);
-                return;
+            var nextTrack = _this.getNextTrack();
+            console.log(nextTrack);
+            if(nextTrack) {
+                if(nextTrack.config.autoplay) {
+                    _this.playTrack('.item-'+nextTrack.config.playlist_position);
+                }
+            } else {
+                _this.playTrack('.item-0');
             }
+            return;
         },     
         currentPlayer: false,
         bigVideo: false,
@@ -245,13 +251,21 @@ $(document).ready(function() {
         getNextTrack: function() {
             var _this = this;
             if(_this.currentPlayer == false) { return; }
-            return playlist[(_this.currentPlayer.config.playlist_position + 1)];
+            var playlistArray = _this.getOrderedPlaylist();
+            return playlistArray[(_this.currentPlayer.config.playlist_position + 1)];
         },
         donePlaying: function(e) {
             var _this = this;
             _this.currentPlayer.config.played = true;
             _this.checkNextPlay(e);
             return;
+        },
+        getOrderedPlaylist: function() {
+            var playlistArray = playlist.slice();
+            playlistArray.sort(function(a,b) {
+                return a.config.playlist_position - b.config.playlist_position;
+            });
+            return playlistArray;
         }
     };
     // Instantiate controller when DOM is loaded.
