@@ -14,13 +14,13 @@ root {
 }
 
 p,ul,li,ol,td,div,span {
-    font-family: font-family: Georgia,Times,Times New Roman,serif;
+    font-family: Georgia,Times,Times New Roman,serif;
     font-weight:300;
     color:#d6d6d6;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: font-family: Georgia,Times,Times New Roman,serif;
+    font-family: Georgia,Times,Times New Roman,serif;
     font-weight:300;
     color:#eee;
 }
