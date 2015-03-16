@@ -251,9 +251,10 @@ a { color: #eee; }
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;    
 }
-.modal-dialog::-webkit-scrollbar { 
+/* Hide scrollbar in modal window */
+/* .modal-dialog::-webkit-scrollbar { 
     display: none; 
-}
+} */
 
 .modal-body {
   padding: 20px;    
