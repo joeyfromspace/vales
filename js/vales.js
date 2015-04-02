@@ -52,7 +52,7 @@ $(document).ready(function() {
             poster: "images/LOOP_LOOP.jpg",
             skipTo: true,
             layout_position: 6,
-            playlist_position: 3,
+            playlist_position: 4,
             played: false
         }
     }, {
@@ -66,7 +66,7 @@ $(document).ready(function() {
             poster: "images/BALLOONS.jpg",
             skipTo: true,
             layout_position: 5,
-            playlist_position: 4,
+            playlist_position: 5,
             played: false
         }
     }, {
@@ -80,7 +80,7 @@ $(document).ready(function() {
             poster: "images/SALMON_SONG.jpg",
             layout_position: 3,
             skipTo: true,
-            playlist_position: 5,
+            playlist_position: 6,
             played: false
         }
     }, {
@@ -94,7 +94,7 @@ $(document).ready(function() {
             poster: "images/YOUTHFUL_FOLLY.jpg",
             skipTo: true,
             layout_position: 1,
-            playlist_position: 6,
+            playlist_position: 7,
             played: false
         }
     }, {
@@ -108,7 +108,7 @@ $(document).ready(function() {
             skipTo: false,
             poster: "images/DOG.jpg",
             layout_position: 7,
-            playlist_position: 10,
+            playlist_position: 3,
             played: false
         }
     }, {
@@ -122,7 +122,7 @@ $(document).ready(function() {
             skipTo: true,
             poster: "images/stairs.jpg",
             layout_position: 8,
-            playlist_position: 7,
+            playlist_position: 8,
             played: false
         }
     }, {
@@ -136,7 +136,7 @@ $(document).ready(function() {
             poster: "images/WHALEWATCH.jpg",
             skipTo: true,
             layout_position: 9,
-            playlist_position: 8,
+            playlist_position: 9,
             played: false
         }
     }, {
@@ -150,7 +150,7 @@ $(document).ready(function() {
             skipTo: true,
             autoplay: true,
             layout_position: 10,
-            playlist_position: 9,
+            playlist_position: 10,
             played: false
         }
     }];
@@ -211,20 +211,21 @@ $(document).ready(function() {
                 // If player div was clicked, do nothing.
                 if($(this).hasClass('active')) { return; }
                 // If player is part of the queue, do nothing.
-                // Disabled 03.13.2015
                  if((typeof(playlist[($(e.currentTarget).attr('data-playlist-position') - 1)]) != 'undefined' && playlist[($(this).attr('data-playlist-position') - 1)].config.played) || playlist[$(this).attr('data-id')].config.skipTo)  {
                      _this.playTrack(e.currentTarget);                
                  }         
                 return;                
             });
         },
-        checkNextPlay: function(event) {
+        checkNextPlay: function(advance) {
             var _this = this;
             var currentVideo = _this.currentPlayer.config.playlist_position;
-            var nextTrack = _this.getNextTrack();
+            var nextTrack = _this.getNextTrack(advance);
             if(nextTrack) {
                 if(nextTrack.config.autoplay) {
                     _this.playTrack('.item-' + nextTrack.config.playlist_position);
+                } else {
+                    _this.checkNextPlay(advance + 1);
                 }
             } else {
                 _this.playTrack('.item-0');
@@ -234,18 +235,18 @@ $(document).ready(function() {
         currentPlayer: false,
         bigVideo: false,
         animating: false,
-        getNextTrack: function() {
+        getNextTrack: function(advance) {
             var _this = this;
             if(_this.currentPlayer == false) {
-                return;
+                return false;
             }
             var playlistArray = _this.getOrderedPlaylist();
-            return playlistArray[(_this.currentPlayer.config.playlist_position + 1)];
+            return playlistArray[(_this.currentPlayer.config.playlist_position + 1 + (advance || 0))] || false;
         },
-        donePlaying: function(e) {
+        donePlaying: function() {
             var _this = this;
             _this.currentPlayer.config.played = true;
-            _this.checkNextPlay(e);
+            _this.checkNextPlay(0);
             return;
         },
         getOrderedPlaylist: function() {
